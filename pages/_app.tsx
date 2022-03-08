@@ -1,8 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { FC, Fragment } from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import { AppProps } from 'next/app'
 
-export default MyApp
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+import 'typeface-roboto';
+
+import { GlobalStyle, theme } from 'lib/theme';
+
+const App: FC<AppProps> = ({ Component, pageProps }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+};
+
+export default App;
+
